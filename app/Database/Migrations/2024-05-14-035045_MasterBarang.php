@@ -30,7 +30,7 @@ class MasterBarang extends Migration
             'tgl_pembelian' => [
                 'type'       => 'DATE',
             ],
-            'tgl_kalibarasi' => [
+            'tgl_kalibrasi' => [
                 'type'       => 'DATE',
                 'null'      => true,
             ],

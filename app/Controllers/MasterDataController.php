@@ -2,74 +2,58 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\MasterBarangModel;
 
 class MasterDataController extends BaseController
 {
-    protected $masterBarangModel;
+    protected $barangModel;
 
     public function __construct()
     {
-        $this->masterBarangModel = new MasterBarangModel();
+        $this->barangModel = new MasterBarangModel();
     }
 
     public function index()
     {
         $data = [
             'title' => 'List Barang',
-            'barang' => $this->masterBarangModel->findAll()
         ];
-
         return view('barang/index', $data);
     }
 
-    public function create()
+    public function getList()
     {
-        $data['title'] = 'Tambah Barang';
-        return view('barang/create', $data);
-    }
+        $request = \Config\Services::request();
+        $barang = $this->barangModel->findAll();
+        $data = [];
 
-    public function store()
-    {
-        $this->masterBarangModel->save([
-            'merk' => $this->request->getPost('merk'),
-            'type' => $this->request->getPost('type'),
-            'sn' => $this->request->getPost('sn'),
-            'tgl_pembelian' => $this->request->getPost('tgl_pembelian'),
-            'tgl_kalibarasi' => $this->request->getPost('tgl_kalibarasi'),
-            'kondisi_alat' => $this->request->getPost('kondisi_alat'),
-            'lokasi' => $this->request->getPost('lokasi'),
-        ]);
+        foreach ($barang as $item) {
+            $row = [];
+            $row[] = $item['id'];
+            $row[] = $item['merk'];
+            $row[] = $item['type'];
+            $row[] = $item['sn'];
+            $row[] = $item['tgl_pembelian'];
+            $row[] = $item['tgl_kalibarasi'];
+            $row[] = $item['kondisi_alat'];
+            $row[] = $item['lokasi'];
+            $row[] = '
+                <button class="btn btn-warning btn-edit" data-id="' . $item['id'] . '">Edit</button>
+                <button class="btn btn-danger btn-delete" onclick="showDeleteConfirmation(' . $item['id'] . ')">Hapus</button>
+            ';
+            $data[] = $row;
+        }
 
-        return redirect()->to('/barang');
-    }
+        $output = [
+            "data" => $data
+        ];
 
-    public function edit($id)
-    {
-        $data['title'] = 'Edit Barang';
-        $data['barang'] = $this->masterBarangModel->find($id);
-        return view('barang/edit', $data);
-    }
-
-    public function update($id)
-    {
-        $this->masterBarangModel->update($id, [
-            'merk' => $this->request->getPost('merk'),
-            'type' => $this->request->getPost('type'),
-            'sn' => $this->request->getPost('sn'),
-            'tgl_pembelian' => $this->request->getPost('tgl_pembelian'),
-            'tgl_kalibarasi' => $this->request->getPost('tgl_kalibarasi'),
-            'kondisi_alat' => $this->request->getPost('kondisi_alat'),
-            'lokasi' => $this->request->getPost('lokasi'),
-        ]);
-
-        return redirect()->to('/barang');
+        return $this->response->setJSON($output);
     }
 
     public function delete($id)
     {
-        $this->masterBarangModel->delete($id);
+        $this->barangModel->delete($id);
         return redirect()->to('/barang');
     }
 }

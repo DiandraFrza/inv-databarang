@@ -12,7 +12,7 @@ class MasterBarangModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['merk', 'type', 'sn', 'tgl_pembelian', 'tgl_kalibarasi', 'kondisi_alat', 'lokasi'];
+    protected $allowedFields = ['merk', 'type', 'sn', 'tgl_pembelian', 'tgl_kalibrasi', 'kondisi_alat', 'lokasi'];
 
     // Dates
     protected $useTimestamps = false;

@@ -25,8 +25,8 @@
             <input type="date" class="form-control" id="tgl_pembelian" name="tgl_pembelian" required>
         </div>
         <div class="form-group">
-            <label for="tgl_kalibarasi">Tanggal Kalibrasi</label>
-            <input type="date" class="form-control" id="tgl_kalibarasi" name="tgl_kalibarasi">
+            <label for="tgl_kalibrasi">Tanggal Kalibrasi</label>
+            <input type="date" class="form-control" id="tgl_kalibrasi" name="tgl_kalibrasi">
         </div>
         <div class="form-group">
             <label>Kondisi Alat : </label>

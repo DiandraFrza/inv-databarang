@@ -17,3 +17,6 @@ $routes->post('/barang/store', 'MasterDataController::store', ['filter' => 'role
 $routes->get('/barang/edit/(:num)', 'MasterDataController::edit/$1', ['filter' => 'role:admin']);
 $routes->post('/barang/update/(:num)', 'MasterDataController::update/$1', ['filter' => 'role:admin']);
 $routes->get('/barang/delete/(:num)', 'MasterDataController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('barang', 'MasterDataController::index', ['filter' => 'role:admin']);
+$routes->get('barang/getList', 'MasterDataController::getList', ['filter' => 'role:admin']);
+$routes->get('barang/delete/(:num)', 'MasterDataController::delete/$1', ['filter' => 'role:admin']);

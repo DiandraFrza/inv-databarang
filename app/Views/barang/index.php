@@ -25,7 +25,7 @@
                 <td class="filterhead"><?= $item['type'] ?></td>
                 <td class="filterhead"><?= $item['sn'] ?></td>
                 <td class="filterhead"><?= $item['tgl_pembelian'] ?></td>
-                <td class="filterhead"><?= $item['tgl_kalibarasi'] ?></td>
+                <td class="filterhead"><?= $item['tgl_kalibrasi'] ?></td>
                 <td class="filterhead"><?= $item['kondisi_alat'] ?></td>
                 <td class="filterhead"><?= $item['lokasi'] ?></td>
                 <td>

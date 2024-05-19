@@ -69,7 +69,7 @@
     <!--  -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('barang') ?>">
-            <i class="fas fa-users"></i>
+            <i class="fa-solid fa-box"></i>
             <span>Barang</span>
         </a>
     </li>
